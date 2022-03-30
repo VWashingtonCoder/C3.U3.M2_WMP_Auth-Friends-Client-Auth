@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect } from 'react';
+import { Navigate } from "react-router-dom";
 
 export default function FriendsList(props) {
     const { friends, getFriends } = props
-    
-    console.log(props)
+
+    if (!window.localStorage.getItem('token')){
+        return <Navigate to='/' />
+    }
 
     useEffect(() => {
         getFriends()
@@ -12,7 +14,7 @@ export default function FriendsList(props) {
 
     return(
         <div id='friend-list'>
-            <h2>FRIENDS LIST</h2>   
+            <h2>FRIENDS LIST</h2>  
             <div id='friend-container'>
                 {friends.map(friend => {
                     console.log(friend)

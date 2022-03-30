@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const initialFormValues = {
     name: "",
@@ -7,8 +8,11 @@ const initialFormValues = {
 
 export default function AddFriends(props) {
     const [values, setValues] = useState(initialFormValues)
-
     const { postFriend, message } = props
+
+    if (!window.localStorage.getItem('token')){
+        return <Navigate to='/' />
+    }
 
     const onChange = evt => {
         const { id, value } = evt.target
