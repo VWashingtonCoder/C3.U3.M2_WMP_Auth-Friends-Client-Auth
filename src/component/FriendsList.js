@@ -18,7 +18,7 @@ export default function FriendsList(props) {
                     console.log(friend)
                     return(
                         <div key={friend.id}>
-                            {friend.name} - {friend.email} : Age {friend.age}
+                            {friend.name} - {friend.email}
                         </div>
                     )
                 })}
